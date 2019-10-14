@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 14 oct. 2019 à 12:48
--- Version du serveur :  5.7.24
--- Version de PHP :  7.3.1
+-- Généré le :  lun. 14 oct. 2019 à 13:59
+-- Version du serveur :  5.7.26
+-- Version de PHP :  7.0.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `mrbs`
 --
-CREATE DATABASE IF NOT EXISTS `mrbs` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `mrbs`;
 
 -- --------------------------------------------------------
 
@@ -173,6 +171,29 @@ CREATE TABLE IF NOT EXISTS `mrbs_repeat` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `mrbs_roles`
+--
+
+DROP TABLE IF EXISTS `mrbs_roles`;
+CREATE TABLE IF NOT EXISTS `mrbs_roles` (
+  `idRoles` smallint(6) NOT NULL,
+  `designation` varchar(32) NOT NULL,
+  PRIMARY KEY (`idRoles`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `mrbs_roles`
+--
+
+INSERT INTO `mrbs_roles` (`idRoles`, `designation`) VALUES
+(0, 'visiteur'),
+(1, 'utilisateur'),
+(2, 'admin'),
+(3, 'comptable');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `mrbs_room`
 --
 
@@ -220,12 +241,13 @@ INSERT INTO `mrbs_room` (`id`, `disabled`, `area_id`, `room_name`, `sort_key`, `
 DROP TABLE IF EXISTS `mrbs_users`;
 CREATE TABLE IF NOT EXISTS `mrbs_users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `level` smallint(6) NOT NULL DEFAULT '0',
+  `level` smallint(6) DEFAULT '0',
   `name` varchar(30) DEFAULT NULL,
   `password` varchar(40) DEFAULT NULL,
   `email` varchar(75) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `level` (`level`)
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `mrbs_users`
@@ -343,7 +365,11 @@ INSERT INTO `mrbs_users` (`id`, `level`, `name`, `password`, `email`) VALUES
 (109, 0, 'bertelles', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'bertelle.sophie@lorraine-sport.net'),
 (110, 0, 'pannetierc', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'pannetier.celine@lorraine-sport.net'),
 (111, 0, 'poulainm', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'poulain.marie-ange@lorraine-sport.net'),
-(112, 0, 'stervinour', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'stervinou.romain@lorraine-sport.net');
+(112, 0, 'stervinour', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'stervinou.romain@lorraine-sport.net'),
+(113, 3, 'Jean-Yves', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'jean.yves@comptable.com'),
+(114, 3, 'Jean-Yves', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'jean.yves@comptable.com'),
+(115, 3, 'Michelle', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'michelle.nasus@orange.fr\r\n'),
+(116, 3, 'Michelle', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'michelle.nasus@orange.fr\r\n');
 
 -- --------------------------------------------------------
 
@@ -501,6 +527,16 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `v_visiteurs`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_visiteurs`  AS  select `mrbs_users`.`name` AS `name`,`mrbs_users`.`email` AS `email` from `mrbs_users` where (`mrbs_users`.`level` = 0) ;
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `mrbs_users`
+--
+ALTER TABLE `mrbs_users`
+  ADD CONSTRAINT `mrbs_users_ibfk_1` FOREIGN KEY (`level`) REFERENCES `mrbs_roles` (`idRoles`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
