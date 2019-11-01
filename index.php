@@ -10,20 +10,33 @@
 require_once "defaultincludes.inc";
 require_once "mrbs_sql.inc";
 
-switch ($default_view)
+if (mrbsCheckInterrupt() === true)
 {
-  case "month":
-    $redirect_str = "month.php";
-    break;
-  case "week":
-    $redirect_str = "week.php";
-    break;
-  default:
-    $redirect_str = "day.php";
+    echo "<div Class='interruption'>"
+            . "Le serveur est en maintenance"
+       . "</div>";
 }
 
-$redirect_str .= "?year=$year&month=$month&day=$day&area=$area&room=$room";
+else if (mrbsCheckInterrupt() === false)
+{
+    switch ($default_view)
+    {
+    case "month":
+        $redirect_str = "month.php";
+        break;
+    case "week":
+        $redirect_str = "week.php";
+        break;
+    default:
+        $redirect_str = "day.php";
+        
+    $redirect_str .= "?year=$year&month=$month&day=$day&area=$area&room=$room";
 
-header("Location: $redirect_str");
+    header("Location: $redirect_str");
+    }
+}
+
+
+
 
 ?>

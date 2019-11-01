@@ -13,6 +13,7 @@ $tbl_repeat    = $db_tbl_prefix . "repeat";
 $tbl_room      = $db_tbl_prefix . "room";
 $tbl_users     = $db_tbl_prefix . "users";
 $tbl_variables = $db_tbl_prefix . "variables";
+$tbl_interruption = $db_tbl_prefix . "interruption";
 
 
 $db_schema_version = 26;

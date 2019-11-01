@@ -958,5 +958,10 @@ function mrbsGetRoomArea($id)
 
   return $id;
 }
-
+function mrbsCheckInterrupt() : bool{
+    
+    global $tbl_interruption;
+    $isInterrupt = sql_query1("SELECT isInterrupt FROM $tbl_interruption");
+    return $isInterrupt;
+}
 ?>
