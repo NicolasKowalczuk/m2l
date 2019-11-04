@@ -34,7 +34,7 @@ checkAuthorised();
 
 // Also need to know whether they have admin rights
 $user = getUserName();
-$required_level = (isset($max_level) ? $max_level : 2);
+$required_level = (isset($max_level) ? $max_level : 3);
 $is_admin = (authGetUserLevel($user) >= $required_level);
 
 print_header($day, $month, $year, isset($area) ? $area : "", isset($room) ? $room : "");

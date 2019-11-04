@@ -188,8 +188,8 @@ CREATE TABLE IF NOT EXISTS `mrbs_roles` (
 INSERT INTO `mrbs_roles` (`idRoles`, `designation`) VALUES
 (0, 'visiteur'),
 (1, 'utilisateur'),
-(2, 'admin'),
-(3, 'comptable');
+(2, 'comptable'),
+(3, 'admin');
 
 -- --------------------------------------------------------
 
@@ -254,13 +254,13 @@ CREATE TABLE IF NOT EXISTS `mrbs_users` (
 --
 
 INSERT INTO `mrbs_users` (`id`, `level`, `name`, `password`, `email`) VALUES
-(1, 2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin.mrbs@lorraine-sport.net'),
+(1, 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin.mrbs@lorraine-sport.net'),
 (2, 0, 'cheminl', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'chemin.lorette@lorraine-sport.net'),
 (3, 0, 'fortetp', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'fortet.patrick@lorraine-sport.net'),
 (4, 0, 'dreauv', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'dreau.valerie@lorraine-sport.net'),
-(5, 2, 'antoineq', '21232f297a57a5a743894a0e4a801fc3', 'antoine.quentin@lorraine-sport.net'),
-(6, 2, 'aubinv', '21232f297a57a5a743894a0e4a801fc3', 'aubin.veronique@lorraine-sport.net'),
-(7, 2, 'ackermanns', '21232f297a57a5a743894a0e4a801fc3', 'ackermann.solange@lorraine-sport.net'),
+(5, 3, 'antoineq', '21232f297a57a5a743894a0e4a801fc3', 'antoine.quentin@lorraine-sport.net'),
+(6, 3, 'aubinv', '21232f297a57a5a743894a0e4a801fc3', 'aubin.veronique@lorraine-sport.net'),
+(7, 3, 'ackermanns', '21232f297a57a5a743894a0e4a801fc3', 'ackermann.solange@lorraine-sport.net'),
 (8, 1, 'guesdonm', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'guesdon.martin@lorraine-sport.net'),
 (9, 1, 'grenierf', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'grenier.francoise@lorraine-sport.net'),
 (10, 1, 'giboired', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'giboire.david@lorraine-sport.net'),
@@ -366,10 +366,10 @@ INSERT INTO `mrbs_users` (`id`, `level`, `name`, `password`, `email`) VALUES
 (110, 0, 'pannetierc', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'pannetier.celine@lorraine-sport.net'),
 (111, 0, 'poulainm', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'poulain.marie-ange@lorraine-sport.net'),
 (112, 0, 'stervinour', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'stervinou.romain@lorraine-sport.net'),
-(113, 3, 'Jean-Yves', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'jean.yves@comptable.com'),
-(114, 3, 'Jean-Yves', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'jean.yves@comptable.com'),
-(115, 3, 'Michelle', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'michelle.nasus@orange.fr\r\n'),
-(116, 3, 'Michelle', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'michelle.nasus@orange.fr\r\n');
+(113, 2, 'Jean-Yves', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'jean.yves@comptable.com'),
+(114, 2, 'Jean-Yves', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'jean.yves@comptable.com'),
+(115, 2, 'Michelle', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'michelle.nasus@orange.fr\r\n'),
+(116, 2, 'Michelle', 'b89f7a5ff3e3a225d572dac38b2a67f7', 'michelle.nasus@orange.fr\r\n');
 
 -- --------------------------------------------------------
 
