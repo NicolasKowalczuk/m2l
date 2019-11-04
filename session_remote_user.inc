@@ -50,6 +50,8 @@ function getUserName()
   }
 }
 
+
+
 // Print the logon entry on the top banner.
 function PrintLogonBox()
 {

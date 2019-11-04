@@ -2,6 +2,17 @@
 // $Id: report.php 1779 2011-01-30 10:06:06Z cimorrison $
 
 require_once "defaultincludes.inc";
+require_once 'mrbs_sql.inc';
+
+if (mrbsCheckInterrupt() === true)
+{
+    echo "<div Class='interruption'>"
+            . "Le serveur est en maintenance"
+       . "</div>";
+}
+
+else if (mrbsCheckInterrupt() === false)
+{
 
 // Constant definitions for the value of the summarize parameter.   These are used
 // for bit-wise comparisons.    For example summarize=3 means produce both
@@ -1433,5 +1444,6 @@ if (isset($areamatch))
 if ($output_as_html || empty($nmatch))
 {
   require_once "trailer.inc";
+}
 }
 ?>

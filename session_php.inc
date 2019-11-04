@@ -211,6 +211,11 @@ function getUserName()
   }
 }
 
+function mrbsGetCurrentUserLevel(): int{
+    $user = getUserName();
+    return authGetUserLevel($user);
+}
+
 // Print the logon entry on the top banner.
 function PrintLogonBox()
 {

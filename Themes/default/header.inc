@@ -1,7 +1,7 @@
 <?php
 
 // $Id: header.inc 1782 2011-01-31 16:56:27Z jberanek $
-
+require_once 'mrbs_sql.inc';
 // Print the page header
 function print_theme_header($day, $month, $year, $area, $room)
 {
@@ -1039,11 +1039,14 @@ function init()
       {
         echo "<td>\n";
         echo "<div id=\"logon_box\">\n";
-        PrintLogonBox(); 
+        PrintLogonBox();
+        
+        echo "Documentation :<a href='images/".mrbsGetCurrentUserLevel().".pdf' download='Documentation'><img src='images/pdf.png' width='25px' alt='Télécharger la documentation'></a>";
+        
         echo "</div>\n";
         echo "</td>\n";
       }
-      ?>
+      ?> 
     </tr>
   </table>
 </div>

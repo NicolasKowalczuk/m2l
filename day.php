@@ -4,7 +4,17 @@
 require_once "defaultincludes.inc";
 require_once "mincals.inc";
 require_once "theme.inc";
+require_once 'mrbs_sql.inc';
 
+if (mrbsCheckInterrupt() === true)
+{
+    echo "<div Class='interruption'>"
+            . "Le serveur est en maintenance"
+       . "</div>";
+}
+
+else if (mrbsCheckInterrupt() === false)
+{
 // Get non-standard form variables
 $timetohighlight = get_form_var('timetohighlight', 'int');
 $debug_flag = get_form_var('debug_flag', 'int');
@@ -469,4 +479,5 @@ else
 }
 
 require_once "trailer.inc";
+}
 ?>

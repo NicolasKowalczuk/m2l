@@ -4,6 +4,17 @@
 
 require_once "defaultincludes.inc";
 require_once "version.inc";
+require_once 'mrbs_sql.inc';
+
+if (mrbsCheckInterrupt() === true)
+{
+    echo "<div Class='interruption'>"
+            . "Le serveur est en maintenance"
+       . "</div>";
+}
+
+else if (mrbsCheckInterrupt() === false)
+{
 
 // Check the user is authorised for this page
 checkAuthorised();
@@ -37,4 +48,5 @@ echo "</p>\n";
 require_once "site_faq" . $faqfilelang . ".html";
 
 require_once "trailer.inc";
+}
 ?>
